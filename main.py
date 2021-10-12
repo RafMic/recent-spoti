@@ -39,6 +39,7 @@ def get_data(data, context):
     date_UTC = []
     date_CET = []
     date_CEST = []
+    duration = []
     # Yes, I hate timezones, how did you know?
 
     for song in recent["items"]:
@@ -58,6 +59,8 @@ def get_data(data, context):
         date_CET.append(CET_time.strftime('%Y-%m-%d'))
         date_CEST.append(CEST_time.strftime('%Y-%m-%d'))
 
+        duration.append(song["track"]["duration_ms"])
+
     song_dict = {
         "song_name": song_names,
         "artist_name": artist_names,
@@ -67,6 +70,7 @@ def get_data(data, context):
         "date_UTC": date_UTC,
         "date_CET": date_CET,
         "date_CEST": date_CEST,
+        "duration": duration
     }
 
     recent_df = pd.DataFrame(song_dict)
@@ -90,7 +94,8 @@ def get_data(data, context):
             bigquery.SchemaField("played_at_CEST", "DATETIME", mode="REQUIRED"),
             bigquery.SchemaField("date_UTC", "DATE", mode="REQUIRED"),
             bigquery.SchemaField("date_CET", "DATE", mode="REQUIRED"),
-            bigquery.SchemaField("date_CEST", "DATE", mode="REQUIRED")
+            bigquery.SchemaField("date_CEST", "DATE", mode="REQUIRED"),
+            bigquery.SchemaField("duration", "INTEGER", mode="REQUIRED")
         ],
         write_disposition="WRITE_APPEND"
     )
