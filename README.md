@@ -1,5 +1,5 @@
 # My recent Spotify songs
-
+### Automatic Spotify data extraction and load into BigQuery table in a hourly manner
 ### Tools used: GCP (BigQuery, Cloud Functions, Cloud Scheduler, Pub/Sub), pandas, [spotipy](https://spotipy.readthedocs.io/en/2.9.0/)
 
 ## DIY
