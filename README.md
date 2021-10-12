@@ -2,7 +2,7 @@
 
 ### Tools used: GCP (BigQuery, Cloud Functions, Cloud Scheduler, Pub/Sub), pandas, [spotipy](https://spotipy.readthedocs.io/en/2.9.0/)
 
-## DYI
+## DIY
 * Create BigQuery dataset and table. Table schema should look like this ![table schema](img/schema.png "table schema")  
 * Create a Pub/Sub topic that will trigger the function
 * Create a Cloud Function that subscribes to a Pub/Sub topic
